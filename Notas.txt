@@ -1,0 +1,6 @@
+
+
+
+
+User = Admin
+password= 123456
