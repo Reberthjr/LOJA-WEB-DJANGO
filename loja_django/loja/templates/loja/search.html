@@ -1,11 +1,13 @@
 {%extends 'core/base.html'%}
 
 
-{%block title%}{{ category.title}}{%endblock%}
+{%block title%} Search {%endblock%}
 
 
 {% block content %}
-    <h1 class="text-2xl">{{ category.title}}</h1>
+    <h1 class="text-2xl">Search</h1>
+
+    <h2 class="text-2xl text-green-600">products relating to "{{query}}" : </h2>
 
     <div class="flex flex-wrap">
 
@@ -29,7 +31,7 @@
         </div>
             
         {%endfor%}
-</div>
+    </div>
 
    
 {% endblock %}
