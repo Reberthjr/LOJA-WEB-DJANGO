@@ -12,6 +12,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CART_SESSION_ID = 'cart'
+
 LOGIN_REDIRECT_URL = 'myaccount'
 
 LOGOUT_REDIRECT_URL = 'frontpage'

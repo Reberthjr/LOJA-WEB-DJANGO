@@ -1,37 +1,20 @@
-{%extends 'core/base.html'%}
+{% extends 'core/base.html' %}
 
-
-{%block title%} Search {%endblock%}
-
+{% block title %}Search{% endblock %}
 
 {% block content %}
     <h1 class="text-2xl">Search</h1>
 
-    <h2 class="text-2xl text-green-600">products relating to "{{query}}" : </h2>
+    <h2 class="text-2xl text-green-600">Products relating to "{{ query }}":</h2>
 
-    <div class="flex flex-wrap">
-
-        {%for product in products %}
-        <div class="product w-1/3 p-2">
-            <div class="p-4 bg-gray-50">
-                <a href="{% url 'product_detalhes' product.category.slug product.slug %}">
-                    {% if product.image %}
-        <div class="image" mb-4>
-            <img src="{{ product.image.url}}" height="400" width="600" alt="Product Image {{ product.image.url}}">
+    {% if products %}
+        {% include 'loja/partials/products.html' %}  
+        <hr>
+    {% else %}
+        <div class="text-center mt-8">
+            <h1 class="text-2xl text-gray-600">No products found for "{{ query }}"</h1>
+            <p class="text-lg">We couldn't find any products matching your search.</p>
+            <p class="text-lg">Please try a different search term.</p>
         </div>
     {% endif %}
-                    <h2 class="text-xl">{{product.title}}</h2>
-                    <p class="text-sm text-red-600">
-                        {{product.get_display_price}}
-                    </p>
-                    <p class="text-sm">{{ product.description }}</p>
-                </a>
-            </div>
-
-        </div>
-            
-        {%endfor%}
-    </div>
-
-   
 {% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+  <h1 class="text-2xl mt-0"> {{ title }}</h1>
+
+  <form method="post" action="." enctype="multipart/form-data" class="mb-10 space-y-1">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <br>
+    <hr>
+    <div class="flex space-x-4 mt-4">
+      <button class="py-2 px-8 rounded bg-green-500 text-white hover:bg-green-900">
+        {% if title == "Add Product" %}
+          Add
+        {% else %}
+          Edit
+        {% endif %}
+      </button>
+
+      {% if title == "Edit Product" %}
+        <a href="{% url 'delete_product' product.id %}" class="py-2 px-8 rounded bg-red-500 text-white hover:bg-red-900">Delete</a>
+      {% endif %}
+
+      <a href="{% url 'mystore' %}" class="py-2 px-8 rounded bg-yellow-500 text-white hover:bg-yellow-900">Cancel</a>
+    </div>
+  </form>
+{% endblock %}
