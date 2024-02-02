@@ -12,6 +12,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = 'login'
+
 CART_SESSION_ID = 'cart'
 
 LOGIN_REDIRECT_URL = 'myaccount'

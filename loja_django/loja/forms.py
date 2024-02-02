@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Product
+from .models import Product, Order
 
 
 class ProductForm(forms.ModelForm):
@@ -21,3 +21,11 @@ class ProductForm(forms.ModelForm):
             'status': forms.Select(attrs={
                 'class': ' w-full form-control border border-gray-200'}),
         }
+        
+        
+        
+        
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model= Order
+        fields = ('f_name','l_name','phone_number','city','zip_code','adrres','complement',)

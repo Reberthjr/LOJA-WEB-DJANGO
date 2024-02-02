@@ -21,7 +21,7 @@ class Cart(object):
             yield item
             
     def __len__(self):
-        return sum(item['quantity'] for item in self.cart.values())
+        return sum(max(0, item['quantity']) for item in self.cart.values())
     
     def save(self):
         self.session[settings.CART_SESSION_ID] = self.cart
@@ -35,8 +35,15 @@ class Cart(object):
             self.cart[product_id] = {'quantity': int(quantity), 'id':product_id}   
         if update_quatity:
             self.cart[product_id]['quantity'] += int(quantity)
+            
+            if self.cart[product_id]['quantity'] == 0:
+                self.delete(product_id)
         
         self.save()
+        
+    def clear(self):
+        del self.session[settings.CART_SESSION_ID]
+        self.session.modified=True
         
     def delete(self, product_id):
         if product_id in self.cart:

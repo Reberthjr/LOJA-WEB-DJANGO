@@ -19,22 +19,33 @@
                 <tbody>
                     {% for item in cart %}
                         <tr>
-                            <td class="py-2 px-4 border-b">{{ item.product.title }}</td>
+                            <td class="py-2 px-4 border-b">
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 overflow-hidden mr-4">
+                                        <img src="{{ item.product.get_thumbnail }}" alt="{{ item.product.title }}">
+                                    </div>
+                                    <span>{{ item.product.title }}</span>
+                                </div>
+                            </td>
                             <td class="py-2 px-4 border-b text-center">
-                                <a href="{% url 'change_quantity' item.product.id %}?action=increase" class="bg-gray-100 text-black px-2 py-1">-</a>
-                                {{ item.quantity }}
-                                <a href="{% url 'change_quantity' item.product.id %}?action=decrease" class="bg-gray-100 text-black px-2 py-1">+</a>
+                                <div class="flex items-center justify-center">
+                                    <a href="{% url 'change_quantity' item.product.id %}?action=decrease" class="bg-gray-100 text-black px-2 py-1">-</a>
+                                    <span class="mx-2">{{ item.quantity }}</span>
+                                    <a href="{% url 'change_quantity' item.product.id %}?action=increase" class="bg-gray-100 text-black px-2 py-1">+</a>
+                                </div>
                             </td>
                             <td class="py-2 px-4 border-b text-center">R$ {{ item.product.price|floatformat:2 }}</td>
                             <td class="py-2 px-4 border-b text-center">
-                                <a href="{% url 'remove_to_cart' item.product.id %}" class="bg-red-500 text-white px-2 py-1">Remover</a>
+                                <a href="{% url 'remove_to_cart' item.product.id %}" class="bg-red-500 text-white px-2 py-1 rounded">Remover</a>
                             </td>
                         </tr>
                     {% endfor %}
                     <tr>
                         <td class="py-2 px-4 font-bold text-end" colspan="2">Total</td>
                         <td class="py-2 px-4 font-bold text-end">R$ {{ cart.get_total_cost|floatformat:2 }}</td>
-                        <td class="py-2 px-4"></td>
+                        <td class="py-2 px-4 text-center">
+                            <a href="{% url 'checkout_buy' %}" class="bg-green-500 text-white px-2 py-1 rounded">Buy Now</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
