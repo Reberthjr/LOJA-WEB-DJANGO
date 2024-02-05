@@ -10,7 +10,7 @@ from .models import Userprofile
 
 from loja.models import Product
 from loja.forms import ProductForm
-from loja.models import Product, Category
+from loja.models import Product, Category, Order, OrderItem
 
 
 def vendor_details(request):
@@ -41,7 +41,11 @@ def register(request):
 @login_required
 def my_store(request):
     products =  request.user.products.exclude(status=Product.delete)
-    return render(request,'userprofile/mystore.html',{'products':products})
+    order_items = OrderItem.objects.filter(product__user=request.user)
+    return render(request,'userprofile/mystore.html',{'products':products, 'order_items':order_items})
+
+
+
 
 
 @login_required
