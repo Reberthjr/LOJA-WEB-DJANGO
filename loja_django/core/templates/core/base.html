@@ -55,6 +55,8 @@
                 });
               </script>
             </div>
+            {% else %}
+            <a href="{% url 'login' %}" class="text-white">Login/register</a>
             
           {% endif %}
         </div>

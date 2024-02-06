@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.text import slugify
 from django.contrib import messages
+from .forms import CustomUserCreationForm
 
 from .models import Userprofile
 
@@ -23,20 +24,15 @@ def my_account(request):
     return render(request,'userprofile/myaccount.html')
 
 def register(request):
-    if request.method =='POST':
-        form = UserCreationForm(request.POST)
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            
-            login(request,user)
-            userprofile = Userprofile.objects.create(user=user)
-            
-            return redirect('frontpage')
-        
+            form.save()
+            return redirect('login')
     else:
-        form = UserCreationForm()
-        
-    return render(request,'userprofile/register.html', {'form':form})
+        form = CustomUserCreationForm()
+
+    return render(request, 'userprofile/register.html', {'form': form})
 
 @login_required
 def my_store(request):
