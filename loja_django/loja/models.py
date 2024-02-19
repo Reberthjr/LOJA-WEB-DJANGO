@@ -102,7 +102,8 @@ class Order(models.Model):
     adrres = models.CharField(max_length=255)
     complement = models.CharField(max_length=255)
     total_payable = models.IntegerField(blank=True, null=True)
-    cmerc_id = models.CharField(max_length=255)
+    paid = models.BooleanField(default=False)
+    payment_intent = models.CharField(max_length=255)
     created_by = models.ForeignKey(User, related_name='orders', on_delete=models.SET_NULL, blank=True, null=True)
     create_at = models.DateTimeField(auto_now_add= True)
     

@@ -44,6 +44,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'loja_django.urls'
 
+STRIPE_PUB_KEY = 'pk_test_51OgFbaGBsB3oCpoy7Foz6OkOr7coy8VnCwxzDMdxUu1mYxnaWPEj45qmN74tJgGIq54YmdGtpO9OvK0rS3hF24jC00VtgiTKDN'
+STRIPE_SECRET_KEY ='sk_test_51OgFbaGBsB3oCpoyW1Up5Y2sYovfhrV1ZWIv8ICDUef90rMubO0W4ypx1IZ2vkPF5m7QpmzRRXyob3rRGbqMETve00iFHWf7En'
+
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
