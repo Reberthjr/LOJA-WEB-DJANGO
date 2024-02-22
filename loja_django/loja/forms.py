@@ -28,4 +28,4 @@ class ProductForm(forms.ModelForm):
 class OrderForm(forms.ModelForm):
     class Meta:
         model= Order
-        fields = ('f_name','l_name','phone_number','city','zip_code','adrres','complement',)
+        fields = ('f_name','l_name','phone_number','city','zip_code','address','complement',)

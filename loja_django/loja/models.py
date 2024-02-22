@@ -99,11 +99,11 @@ class Order(models.Model):
     phone_number = models.CharField(max_length=20)
     city = models.CharField(max_length=255)
     zip_code = models.CharField(max_length=255)
-    adrres = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
     complement = models.CharField(max_length=255)
     total_payable = models.IntegerField(blank=True, null=True)
     paid = models.BooleanField(default=False)
-    payment_intent = models.CharField(max_length=255)
+    payment_intent = models.CharField(max_length=255,null=True)
     created_by = models.ForeignKey(User, related_name='orders', on_delete=models.SET_NULL, blank=True, null=True)
     create_at = models.DateTimeField(auto_now_add= True)
     
