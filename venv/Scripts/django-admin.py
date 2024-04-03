@@ -1,4 +1,4 @@
-#!C:\Users\disys.joao_loggi\Documents\GitHub\Site-django\LOJA-WEB-DJANGO\venv\Scripts\python.exe
+#!C:\Users\disys.joao_loggi\Desktop\projetos python\LOJA-WEB-DJANGO\venv\Scripts\python.exe
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 
